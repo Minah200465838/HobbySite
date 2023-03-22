@@ -7,7 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./controllers/index');
 const usersRouter = require('./controllers/users');
 // reference our new custom controller..everytime I make controllers, I have to add this
-const hobby = require('./controllers/hobby');
+const hobby = require('./controllers/hobbys');
 
 const app = express();
 
