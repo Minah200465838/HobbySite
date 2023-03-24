@@ -2,7 +2,7 @@
 <h3>Introducing My hobby</h3>
 <a href="/hobby/create">Add a New Hobby</a>
 {{!-- short term hobby cards --}}
-<div class="card" style="width: 18rem;">
+{{!-- <div class="card" style="width: 18rem;">
   <img src="/images/gelnails.jpg" class="card-img-top" alt="gelnails">
   <div class="card-body">
     <h5 class="card-title">Gel nails</h5>
@@ -14,7 +14,39 @@
     <a href="#" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-primary">Delete</a>
   </div>
-</div>
+</div> --}}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Review</th>
+        <th>Recommandation</th>
+        <th>Reference Site</th>
+        <th>Cost</th>
+    </thead>
+    <tbody>
+        {{#each hobbys}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.review}}</td>
+                <td>{{this.recommandation}}</td>
+                <td>{{this.referenceSite}}</td>
+                {{!-- {{#if ../user}}
+                    <td class="text-center">
+                        <a href="/employers/edit/{{this._id}}" title="Edit">
+                            <i class="fa-solid fa-pen-to-square"></i></a>
+                        
+                        <a href="/employers/delete/{{this._id}}" title="Delete" onclick="return confirmDelete();">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                                        
+                    </td>
+                {{/if}} --}}
+                <td>{{this.hobby}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
 
 
 {{!-- long term hobby cards --}}

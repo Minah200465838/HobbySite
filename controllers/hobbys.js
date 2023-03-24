@@ -9,6 +9,20 @@ router.get('/myhobby', (req, res) => {
     res.render('hobby/myhobby', {
         title: 'myhobby'
     });
+     //** get data from mongodb using the hobby model ** -> cause errors..//
+    /*Hobby.find((err, hobby) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log(employers);
+            res.render('hobby/myhobby', {
+                title: 'Hobby List',
+                hobbys: hobbys,
+                user: req.user
+            });
+        }
+    });*/
 });
 
 router.get('/recommendation', (req, res) => {
@@ -17,14 +31,14 @@ router.get('/recommendation', (req, res) => {
     });
 });
 
-// GET
+// GET /create - 
 router.get('/create', (req, res) => {
     res.render('hobby/create', {
         title: 'create'
     });
 });
 
-// POST
+// POST /create - 
 router.post('/create', (req, res) => {
     Hobby.create(req.body, (err, newDocument) => {
         if (err) {
