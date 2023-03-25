@@ -8,6 +8,7 @@ const indexRouter = require('./controllers/index');
 const usersRouter = require('./controllers/users');
 // reference our new custom controller..everytime I make controllers, I have to add this
 const hobby = require('./controllers/hobbys');
+const auth = require('./controllers/auth');
 
 const app = express();
 
@@ -43,10 +44,32 @@ mongoose.connect(process.env.CONNECTION_STRING)
   console.log('Connection to MongoDB Failed');
 });
 
+// passport auth config
+const passport = require('passport');
+const session = require('express-session');
+
+app.use(session({
+  secret: process.env.PASSPORT_SECRET,
+  resave: true,
+  saveUninitialized: false
+}));
+//* passport for logiin *//
+// start passport w/session support
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/user');
+passport.use(User.createStrategy());
+
+// read / write session variables
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // map all requests at /hobby to our own hobby.js controller..pointing /hobby and sned those to fmaily controller
 app.use('/hobby', hobby);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
