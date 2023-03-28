@@ -38,14 +38,23 @@
                         <a class="nav-link" href="/hobby/myhobby">MyHobby</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/hobby/recommendation">Recommendation</a>
+                        <a class="nav-link" href="/categories/create">Category</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/hobby/recommendation">Recommendation</a>
+                    </li>
+                    {{#if user}}
+                        <li class="nav-item">
+                            <a class="nav-link px-2 text-muted" href="#">{{user.username}}</a>
+                        </li>
+                        <li class="nav-item">
                         <a class="nav-link px-2 text-muted" href="/auth/logout">Logout</a>
                     </li>
+                    {{else}}
+                    
                     <li class="nav-item"><a href="/auth/register" class="nav-link px-2 text-muted">Register</a></li>
                     <li class="nav-item"><a href="/auth/login" class="nav-link px-2 text-muted">Login</a></li>
-                 
+                    {{/if}}
                 </ul>
             </div>
         </nav>

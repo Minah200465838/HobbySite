@@ -9,6 +9,8 @@ const usersRouter = require('./controllers/users');
 // reference our new custom controller..everytime I make controllers, I have to add this
 const hobby = require('./controllers/hobbys');
 const auth = require('./controllers/auth');
+const categories = require('./controllers/categories');
+
 
 const app = express();
 
@@ -65,11 +67,30 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// google auth strategy for passport
+// 1. authenticate google app w/api keys
+// 2. check if we already have this user w/this Google id in the users collection
+// 3. if user not found, create a new Google user in our users collection
+const googleStrategy = require('passport-google-oauth20').Strategy;
+passport.use(new googleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+}, (accessToken, refreshToken, profile, done) => {
+  User.findOrCreate({oauthId: profile.id }, {
+    username: profile.displayName,
+    oauthProvider: 'Google'
+  }, (err, user) => {
+    return done(err, user);
+  })
+}));
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // map all requests at /hobby to our own hobby.js controller..pointing /hobby and sned those to fmaily controller
 app.use('/hobby', hobby);
 app.use('/auth', auth);
+app.use("/categories", categories);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

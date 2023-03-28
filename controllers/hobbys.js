@@ -3,7 +3,7 @@ const router = express.Router();
 
 // use Employer model for CRUD w/mongoose
 const Hobby = require('../models/hobby');
-
+const Category = require('../models/category');
 // global auth check to make most methods private
 const global = require('../controllers/globalFunctions');
 
@@ -13,19 +13,28 @@ router.get('/myhobby', (req, res) => {
         title: 'myhobby'
     });
      //** get data from mongodb using the hobby model ** -> cause errors..//
-    /*Hobby.find((err, hobby) => {
+   Hobby.find((err, hobby) => {
         if (err) {
             console.log(err)
         }
         else {
-            console.log(employers);
+            console.log(hobbies);
             res.render('hobby/myhobby', {
                 title: 'Hobby List',
                 hobbys: hobbys,
                 user: req.user
             });
+        
         }
-    });*/
+    });
+        // new syntax w/o callback for mongoose 7 (march 2022)
+        // try {
+        //     const hobbies = await hobby.find().sort('name');
+        //     return res.json(hobbies).status(200);
+        // }
+        // catch (err) {
+        //     return res.json(err).status(400);
+        // }
     
 });
 
@@ -42,7 +51,7 @@ router.get('/create', global.isAuthenticated,  (req, res) => {
         title: 'create'
     });
 });
-/*
+
 // injected our auth check function as middleware for security
 router.get('/create', global.isAuthenticated, (req, res) => {
     // use City model to fetch list of categories from db to populate city dropdown
@@ -58,7 +67,7 @@ router.get('/create', global.isAuthenticated, (req, res) => {
             });
         }
     }).sort('name');    
-});*/
+});
 
 // POST /create - 
 router.post('/create', global.isAuthenticated, (req, res) => {

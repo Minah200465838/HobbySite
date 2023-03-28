@@ -64,4 +64,14 @@ router.get('/logout', (req, res) => {
     })
 })
 
+// google auth login
+router.get('/google', passport.authenticate('google', {
+    scope: ['profile']
+}), (req, res) => {});
+router.get('/google/callback', passport.authenticate('google', {
+    successRedirect: '/hobby/myhobby',
+    failureRedirect: '/auth/login',
+    failureMessage: 'Could not authenticate with Goggle'
+}))
+
 module.exports = router;

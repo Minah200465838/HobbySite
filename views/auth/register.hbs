@@ -17,11 +17,12 @@
         </fieldset>
         <fieldset class="form-group">
                 <label for="confirm" class="col-2 control-label mt-2">Confirm: *</label>
-                <input name="confirm" id="confirm" type="password" required
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                <input name="confirm" id="confirm" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"onkeyup="return comparePasswords();" />
+                <span id="pwMsg"></span>
         </fieldset>
         <fieldset class="form-group">
-                <button class="btn offset-2 mt-3 Button">Register</button>
+                <button class="btn offset-2 mt-3 Button" onclick="return comparePasswords();">Register</button>
+                <button class="btn mt-3 Button"><a class="authLink" href="/auth/google">Google accouunt Register</a></button>
                 <hr />
                 Already have an account? <button class="btn mt-1 Button"><a href="/auth/login" title="Login">Login</a></button>
         </fieldset>

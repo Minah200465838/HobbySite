@@ -1,7 +1,9 @@
 <h1 class="mt-3">My hobby</h1>
 <h3>Introducing My hobby</h3>
+{{!-- only users can add new hobby --}}
+{{#if user}} 
 <button class="btn mt-3 Button"><a href="/hobby/create">Add a New Hobby</a></button>
-
+{{/if}}
 {{!-- short term hobby cards --}}
 {{!-- <div class="card" style="width: 18rem;">
   <img src="/images/gelnails.jpg" class="card-img-top" alt="gelnails">
@@ -29,20 +31,20 @@
         {{#each hobbys}}
             <tr>
                 <td>{{this.name}}</td>
+                <td>{{this.category}}</td>
                 <td>{{this.review}}</td>
                 <td>{{this.recommandation}}</td>
                 <td>{{this.referenceSite}}</td>
-                {{!-- {{#if ../user}}
+                {{#if ../user}}
                     <td class="text-center">
-                        <a href="/employers/edit/{{this._id}}" title="Edit">
-                            <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/categories/edit/{{this._id}}" title="Edit">Edit</a>
                         
-                        <a href="/employers/delete/{{this._id}}" title="Delete" onclick="return confirmDelete();">
-                            <i class="fa-solid fa-trash-can"></i>
+                        <a href="/categories/delete/{{this._id}}" title="Delete" onclick="return confirmDelete();">
+                        Delete
                         </a>
                                         
                     </td>
-                {{/if}} --}}
+                {{/if}}
                 <td>{{this.hobby}}</td>
             </tr>
         {{/each}}
