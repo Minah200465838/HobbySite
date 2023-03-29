@@ -6,6 +6,10 @@ const hobbySchema = new mongoose.Schema({
         type: String,
         required: 'Hobby name is required'
     },
+    category: {
+        type: String,
+        // required: 'Category is required'
+    },
     review: {
         type: String,
         required: 'Review is required'
