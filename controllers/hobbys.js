@@ -6,6 +6,18 @@ const Hobby = require('../models/hobby');
 const Category = require('../models/category');
 // global auth check to make most methods private
 const global = require('../controllers/globalFunctions');
+// multer
+const multer = require('multer');
+const _storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    }
+  })
+  
+const upload = multer({ storage: _storage });
 
 /** GET hobby index */
 router.get('/myhobby', (req, res) => {
@@ -35,6 +47,7 @@ router.get('/myhobby', (req, res) => {
         // catch (err) {
         //     return res.json(err).status(400);
         // }
+  
     
 });
 
@@ -44,6 +57,19 @@ router.get('/recommendation', (req, res) => {
     });
 });
 
+// GET / upload- multer 
+router.get('/upload', (req, res) => {
+    res.render('hobby/upload', {
+        title: 'upload'
+    });
+});
+
+// POST / upload-multer
+router.post('/upload', upload.single('userfile'), (req, res) => {
+    res.send('Uploaded : '+req.file.filename);
+    console.log(req.file); 
+}); 
+ 
 // GET /create - display form to add an hobby */
 // injected our auth check function as middleware for security
 router.get('/create', global.isAuthenticated,  (req, res) => {

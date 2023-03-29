@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+//multer
+// const multer  = require('multer');
+// const upload = multer({ dest: 'uploads/' })
 
 const indexRouter = require('./controllers/index');
 const usersRouter = require('./controllers/users');
@@ -28,7 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // images
 app.use(express.static("images"));
-
+// upload images from the users-related to multer
+app.use('/hobby/recommendation', express.static("uploads"));
 
 // use dotenv to read .env file with config vars
 if (process.env.NODE_ENV != 'production') {
