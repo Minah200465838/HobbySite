@@ -10,14 +10,14 @@ router.get('/create', (req, res) => {
 });
 
 // POST: /categories/create => process form submission to create a new category document in mongodb
-router.post('/create', async (req, res) => {
-    Category.create(req.body, async (err, newDocument) => {
-        // if (err) {
-        //     console.log(err);
-        // }
-        // else {
-        //     res.redirect('/');
-        // }
+router.post('/create', (req, res) => {
+    Category.create(req.body, (err, newDocument) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.redirect('/');
+        }
         // try {
         //     const employers = await Employer.find().sort('name');
         //     return res.json(employers).status(200);

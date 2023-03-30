@@ -4,19 +4,19 @@ const mongoose = require('mongoose');
 const hobbySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 'Hobby name is required'
+        required: 'name is required'
     },
     category: {
-        type: String,
+        type: String
         // required: 'Category is required'
     },
     review: {
         type: String,
-        required: 'Review is required'
+        required: 'review is required'
     },
     recommandation: {
         type: String,
-        required: 'Recommandation staus is required'
+        required: 'recommandation is required'
     },
     referenceSite: {
         type: String

@@ -1,4 +1,4 @@
-<h1>Hobby Information</h1>
+<h1>Hobby Edit Details</h1>
 <hr>
 
 <div>
@@ -6,38 +6,35 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Name: *</label>
-                <input type="text" class="form-control" name="name" id="name" required />
+                <input type="text" class="form-control" name="name" id="name" required value="{{hobby.name}}"/>
             </div>
             <div class="form-group col-md-6">
                 <label for="category">Category: *</label>
                 <select name="category" id="category" >
                 {{#each categories}}
-                    <option>{{this.name}}</option>
+                    {{selectOption this.name ../hobby.category}}
                 {{/each}}
                 </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="review">Review: *</label>
-                <textarea class="form-control" name="review" id="review" required></textarea>
+                <textarea class="form-control" name="review" id="review" required value="{{hobby.review}}"></textarea>
             </div>
         </div>
         <div class="form-group col-md-6">
             <label for="recommandation">Recommandation: *</label>
-            <input type="text" class="form-control" name="recommandation" id="recommandation" required />
+            <input type="text" class="form-control" name="recommandation" id="recommandation" required value="{{hobby.recommandation}}" />
         </div>
         <div class="form-group col-md-6">
             <label for="referenceSite">Reference Site:</label>
-            <textarea name="referenceSite" class="form-control" id="referenceSite"></textarea>
+            <textarea name="referenceSite" class="form-control" id="referenceSite">value="{{hobby.referenceSite}}"</textarea>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="cost">Cost:</label>
-                <input type="number" class="form-control" min="1" name="cost" id="cost" />
+                <input type="number" class="form-control" min="1" name="cost" id="cost" value="{{hobby.cost}}"/>
             </div>
             <button type="submit" class="btn mt-3 Button">Save</button>
     </form>
 </div>
 
-{{!-- <div>
-    <img src="/images/main.png" alt="mainImage" width="500" height="500" />
-</div> --}}

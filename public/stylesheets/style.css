@@ -67,4 +67,11 @@ a:hover{
 } */
 .table {
   color: #A7727D;
+  background-color: #DFDFDE;
 }
+/* tbody tr td {
+  color: #fff;
+}
+tbody tr td a {
+  color: #fff;
+} */

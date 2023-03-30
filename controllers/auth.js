@@ -11,7 +11,8 @@ router.get('/register', (req, res) => {
 
     res.render('auth/register', { 
         title: 'Register',
-        messages: messages
+        messages: messages,
+        user: req.user
     });
 });
 
@@ -42,7 +43,8 @@ router.get('/login', (req, res) => {
 
     res.render('auth/login', { 
         title: 'Login',
-        messages: messages
+        messages: messages,
+        user: req.user
     });
 });
 
