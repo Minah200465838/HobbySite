@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// use Employer model for CRUD w/mongoose
+// use Hobby model for CRUD w/mongoose
 const Hobby = require('../models/hobby');
 const Category = require('../models/category');
 // global auth check to make most methods private
@@ -64,7 +64,7 @@ router.post('/upload', upload.single('userfile'), (req, res) => {
 // GET /create - display form to add an hobby */
 // injected our auth check function as middleware for security
 router.get('/create', global.isAuthenticated, (req, res) => {
-    // use City model to fetch list of categories from db to populate city dropdown
+    // use Category model to fetch list of categories from db to populate category dropdown
     Category.find((err, categories) => {
         if (err) {
             console.log(err);
