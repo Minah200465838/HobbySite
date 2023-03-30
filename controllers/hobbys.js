@@ -40,6 +40,11 @@ router.get('/myhobby', (req, res) => {
    
 });
 
+router.get('/recommendation', (req, res) => {
+    res.render('hobby/recommendation', {
+        title: 'recommendation'
+    });
+});
 
 //* multer */
 // GET / upload- multer 
@@ -81,7 +86,7 @@ router.post('/create', global.isAuthenticated, (req, res) => {
             console.log(err);
         }
         else {
-            res.redirect('/hobby');
+            res.redirect('/hobby/myhobby');
         }
     });
 });
