@@ -12,10 +12,11 @@ For CSS, I mainly used Bootstrap, plus I did my own simple css, sush as font, co
 
 # For a feature of my choice is multer. 
 https://www.npmjs.com/package/multer 
-I installed it first, and made the form to upload the pictures from users in the recommendation page.
-If you click 'add a new hobby' button, it take you to the page that allow you upload your images.
-And once you upload you image, the images are stored in uploads folder and show your image imformation on the terminal on the VScode.
-Then if you want to see that picture, go to the url 'localhost:3000/hobby/recommendation/nameOfPicture'.
-If the picture name is cook.png, then url will be 'localhost:3000/hobby/recommendation/cook.png'
+ - I installed it first, and made the form to upload the pictures from users in the recommendation page.
+ - If you click 'add a new hobby' button, it take you to the page that allow you upload your images.
+ - And once you upload you image, the images are stored in uploads folder and show your image imformation on the terminal on the VScode.
+ - Then if you want to see that picture, go to the url 'localhost:3000/hobby/recommendation/nameOfPicture'.
+ - If the picture name is cook.png, then url will be 'localhost:3000/hobby/recommendation/cook.png'
+ - But this url is not working on render
 
 *render link: https://hobby-site.onrender.com

@@ -18,13 +18,6 @@ router.post('/create', (req, res) => {
         else {
             res.redirect('/');
         }
-        // try {
-        //     const employers = await Employer.find().sort('name');
-        //     return res.json(employers).status(200);
-        // }
-        // catch (err) {
-        //     return res.json(err).status(400);
-        // }
     });
 });
 
