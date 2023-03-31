@@ -1,8 +1,10 @@
 <h1>Login</h1>
 <hr>
+{{!-- if user write wrong password, and show this message --}}
 {{#if messages}}
     <p class="alert alert-danger">Invalid Login</p>        
 {{else}}
+{{!-- if the user write correct password, then show them this message --}}
     <p class="alert alert-secondary">Please enter your correct login</p>   
 {{/if}}
 <form method="post">
